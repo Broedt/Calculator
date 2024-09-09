@@ -8,40 +8,40 @@
 </head>
 <body>
     <div class="calculator">
-        <div id="display">50</div>
+        <div id="display"></div>
         <div class="btns">
             <div class="firstRow">
-                <button class="grey">AC</button>
-                <button class="grey">+/-</button>
-                <button class="grey">%</button>
+                <button class="grey" id="clear">AC</button>
+                <button class="grey" id="change">+/-</button>
+                <button class="grey" id="percent">%</button>
                 <button class="orange">/</button>
             </div>
             <div class="secondRow">
-                <button class="dGrey">7</button>
-                <button class="dGrey">8</button>
-                <button class="dGrey">9</button>
-                <button class="orange">X</button>
+                <button class="numbers">7</button>
+                <button class="numbers">8</button>
+                <button class="numbers">9</button>
+                <button class="orange" id="times">X</button>
             </div>
             <div class="thirdRow">
-                <button class="dGrey">4</button>
-                <button class="dGrey">5</button>
-                <button class="dGrey">6</button>
-                <button class="orange">-</button>
+                <button class="numbers">4</button>
+                <button class="numbers">5</button>
+                <button class="numbers">6</button>
+                <button class="orange" id="minus">-</button>
             </div>
             <div class="fourthRow">
-                <button class="dGrey">1</button>
-                <button class="dGrey">2</button>
-                <button class="dGrey">3</button>
-                <button class="orange">+</button>
+                <button class="numbers">1</button>
+                <button class="numbers">2</button>
+                <button class="numbers">3</button>
+                <button class="orange" id="plus">+</button>
             </div>
             <div class="fifthRow">
-                <button class="dGrey" id="zero">0</button>
-                <button class="dGrey">.</button>
-                <button class="orange">=</button>
+                <button class="numbers" id="zero" data-key="0" >0</button>
+                <button class="numbers" data-key="." >.</button>
+                <button class="orange" id="makes">=</button>
             </div>
         </div>
     </div>
-    
+<script src="/script.js"></script> 
 </body>
-<script src="/script.js"></script>
+
 </html>
