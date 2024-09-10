@@ -27,6 +27,7 @@ function operate(op,num1,num2){
 let firstNum = 0;
 let operator = 0;
 let secondNum = 0;
+let result = null;
 
 
 let display = document.getElementById("display");
@@ -39,21 +40,33 @@ const percentButton = document.getElementById("percent");
 const plusButton = document.getElementById("plus");
 const minusButton = document.getElementById("minus");
 const timesButton = document.getElementById("times");
-const makesButton = document.getElementById("makes");
+const divideButton = document.getElementById("divide");
+const resultButton = document.getElementById("makes");
 
 //function to show the numbers clicked on the display//
 numButtons.forEach(button => {
     button.addEventListener('click', function(){
        let text = display.textContent;
+      
        if (isNaN(text)){
         display.textContent = null
        };
+       if (display.textContent == result){
+        clearDisplay();
         display.textContent += button.textContent;
         displayValue = display.textContent;
+       }
+       else
+        display.textContent += button.textContent;
+        displayValue = display.textContent;
+        secondNum = parseFloat(displayValue);
         console.log(displayValue);
     })
    
 });
+function clearDisplay(){
+    display.textContent = null;
+}
 
 //function to clear the display when AC is clicked//
 clearButton.onclick = function(){
@@ -74,7 +87,7 @@ percentButton.onclick = function(){
 };
 
 plusButton.onclick = function(){
-    firstNum = parseInt(displayValue);
+    firstNum = parseFloat(displayValue);
     operator = "+";
     displayValue = 0;
     display.textContent = plusButton.textContent;
@@ -86,7 +99,8 @@ plusButton.onclick = function(){
 };
 
 minusButton.onclick = function(){
-    firstNum = parseInt(displayValue);
+    
+    firstNum = parseFloat(displayValue);
     operator = "-";
     displayValue = 0;
     display.textContent = minusButton.textContent;
@@ -97,14 +111,41 @@ minusButton.onclick = function(){
     
 };
 
-makesButton.onclick = function(){
+timesButton.onclick = function(){
     
-    secondNum = parseInt(displayValue);
-    let result = operate(operator,firstNum,secondNum);
+    firstNum = parseFloat(displayValue);
+    operator = "*";
+    displayValue = 0;
+    display.textContent = timesButton.textContent;
+
+    console.log("firstNumber", firstNum);
+    console.log("operator", operator);
+    console.log("displayValue", displayValue);
+    
+};
+
+divideButton.onclick = function(){
+    
+    firstNum = parseFloat(displayValue);
+    operator = "/";
+    displayValue = 0;
+    display.textContent = divideButton.textContent;
+
+    console.log("firstNumber", firstNum);
+    console.log("operator", operator);
+    console.log("displayValue", displayValue);
+    
+};
+
+resultButton.onclick = function(){
+    
+    
+    result = operate(operator,firstNum,secondNum);
     displayValue = result;
     display.textContent = displayValue;
+    firstNum = result;
 
-    console.log("secondNum", secondNum,"firstNum", firstNum,"operator", operator);
+    console.log("secondNum", secondNum,"firstNum", firstNum,"operator", operator, "displayValue", displayValue);
     console.log(result);
 };
 
