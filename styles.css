@@ -43,7 +43,7 @@ body{
 
 }
 
-.grey, .numbers, .orange{
+.grey, .numbers, .operators, #makes{
     width: calc(450px/4 - 4px);
     height: calc(600px/6 - 4px);
     margin: 2px;
@@ -58,7 +58,7 @@ body{
     background-color: rgb(90, 89, 89);
     color: white;
 }
-.orange{
+.operators, #makes{
     background-color: rgb(251, 175, 35);
     color: white;
 }

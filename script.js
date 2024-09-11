@@ -60,7 +60,9 @@ numButtons.forEach(button => {
         display.textContent += button.textContent;
         displayValue = display.textContent;
         secondNum = parseFloat(displayValue);
-        console.log(displayValue);
+        console.log("displayValue",displayValue);
+        console.log("firstNum", firstNum);
+        console.log("secondNum", secondNum);
     })
    
 });
@@ -95,6 +97,7 @@ plusButton.onclick = function(){
     console.log("firstNumber", firstNum);
     console.log("operator", operator);
     console.log("displayValue", displayValue);
+    console.log("secondNumber", secondNum);
     
 };
 
@@ -149,5 +152,3 @@ resultButton.onclick = function(){
     console.log(result);
 };
 
-console.log(operate("*",4,2));
-console.log(subtract(4,2))
