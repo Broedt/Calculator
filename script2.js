@@ -1,14 +1,18 @@
 function add(a,b){
-    return (a+b);
+    let result = (a+b);
+    return Math.round(result*100)/100;
  };
  function subtract(a,b){
-     return a-b;
+     let result = a-b;
+     return Math.round(result*100)/100;
  } ;
  function multiply(a,b){
-     return a*b;
+     let result = a*b;
+     return Math.round(result*100)/100;
  };
  function divide(a,b){
-     return a/b;
+     let result = a/b;
+     return Math.round(result*100)/100;
  };
  function operate(op,num1,num2){
      if (op === "+"){
@@ -66,6 +70,7 @@ numButtons.forEach(button => {
 ;
 
 makesButton.addEventListener('click',function(){
+   
     let result = operate(operator,parseFloat(firstNum),parseFloat(secondNum));
     firstNum = result;
     display.textContent = result;
@@ -105,6 +110,8 @@ clearButton.addEventListener('click', function(){
 deleteButton.addEventListener('click', function(){
     let delNum = display.textContent
     firstNum = delNum.slice(0, -1);
+    display.textContent = firstNum;
+    console.log(delNum.slice(0, -1));
 });
 
 
