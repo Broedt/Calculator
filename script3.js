@@ -57,6 +57,7 @@ function add(a,b){
             updateDisplay(displayValue);
         };
         if ( firstNum !== ""){
+            displayValue = "";
             displayValue += pressedButton;
             secondNum = displayValue;
             updateDisplay(secondNum);
@@ -92,7 +93,7 @@ opButtons.forEach(button => {
         }
         
         else 
-        firstNum = operate(operator, parseFloat(firstNum),parseFloat(secondNum))
+        firstNum = operate(operator, parseFloat(firstNum),parseFloat(secondNum));
         operator = pressedButton;
         updateDisplay(operator);
        
@@ -131,7 +132,6 @@ delButton.addEventListener('click', function(){
     let delNum = displayValue.slice(0,-1);
     displayValue = delNum;
     updateDisplay(displayValue);
-
 });
 
 percentButton.addEventListener('click',function(){
