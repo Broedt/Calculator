@@ -57,7 +57,6 @@ function add(a,b){
             updateDisplay(displayValue);
         };
         if ( firstNum !== ""){
-            displayValue = "";
             displayValue += pressedButton;
             secondNum = displayValue;
             updateDisplay(secondNum);
@@ -66,24 +65,27 @@ function add(a,b){
         displayValue += pressedButton;
         updateDisplay(displayValue);
     })
-    
 });
 
 dotButton.addEventListener('click', function(){
     if(displayValue.includes('.')){
-        dotButton.textContent = "";
+            dotButton.textContent = "";
     }
-})
+    
+    
+});
 
 opButtons.forEach(button => {
     button.addEventListener('click',function(){
         let pressedButton = button.textContent;
+        dotButton.textContent = ".";
         if (operator == 0){
             firstNum = displayValue;
             displayValue = "";
             secondNum = "";
             operator = pressedButton;
             updateDisplay(operator);
+            console.log("first",firstNum);
         }
         else if( result !== 0){
             displayValue = "";
@@ -93,16 +95,18 @@ opButtons.forEach(button => {
         }
         
         else 
+        
         firstNum = operate(operator, parseFloat(firstNum),parseFloat(secondNum));
         operator = pressedButton;
         updateDisplay(operator);
        
-        
+        console.log("op",operator,"first",firstNum,"sec",secondNum);
     })
 });
 
 makesButton.addEventListener('click', function(){
     let message = 0;
+    displayValue = "";
     switch(true){
         case (operator == "/" && firstNum == 0 && secondNum == 0):
             message = "ask siri";
@@ -129,6 +133,7 @@ clearButton.addEventListener('click', function(){
 });
 
 delButton.addEventListener('click', function(){
+    
     let delNum = displayValue.slice(0,-1);
     displayValue = delNum;
     updateDisplay(displayValue);
