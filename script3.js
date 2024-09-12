@@ -51,11 +51,15 @@ function add(a,b){
  numButtons.forEach(button => {
     button.addEventListener('click', function(){
         let pressedButton = button.textContent;
+        let divNum = displayValue.length;
+        if (divNum > 10){
+            displayValue = displayValue.slice(0,-1);
+            updateDisplay(displayValue);
+        };
         if ( firstNum !== ""){
             displayValue += pressedButton;
             secondNum = displayValue;
             updateDisplay(secondNum);
-            console.log("second",secondNum,"displayValue",displayValue);
         }
         else
         displayValue += pressedButton;
@@ -93,7 +97,6 @@ opButtons.forEach(button => {
         updateDisplay(operator);
        
         
-        console.log("first", firstNum, "second", secondNum)
     })
 });
 
@@ -128,6 +131,7 @@ delButton.addEventListener('click', function(){
     let delNum = displayValue.slice(0,-1);
     displayValue = delNum;
     updateDisplay(displayValue);
+
 });
 
 percentButton.addEventListener('click',function(){
