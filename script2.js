@@ -49,21 +49,21 @@ numButtons.forEach(button => {
     button.addEventListener('click', function(){
         let input = button.textContent;
         if (display.textContent == operator){
-            display.textContent = "";
-        };
-            
+            display.textContent = "";}
+            else if (display.textContent === result){
+                display.textContent = "";
+                firstNum = "";
+                operator = 0;
+            }
+        ;
             if(operator == 0){
             firstNum += input;
             display.textContent = firstNum;
-            
             }
-            ;
-            if(operator !== 0){
+            else if(operator !== 0){
             secondNum += input;
             display.textContent += input;
-            }
-            ;
-            
+            };
         
     })
 })
