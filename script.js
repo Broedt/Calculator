@@ -56,11 +56,13 @@ function add(a,b){
             displayValue = displayValue.slice(0,-1);
             updateDisplay(displayValue);
         };
+        
         if ( firstNum !== ""){
             displayValue += pressedButton;
             secondNum = displayValue;
             updateDisplay(secondNum);
         }
+
         else
         displayValue += pressedButton;
         updateDisplay(displayValue);
@@ -98,7 +100,9 @@ opButtons.forEach(button => {
         
         firstNum = operate(operator, parseFloat(firstNum),parseFloat(secondNum));
         operator = pressedButton;
-        updateDisplay(operator);
+        secondNum = "";
+        displayValue = "";
+        updateDisplay(firstNum+operator);
        
         console.log("op",operator,"first",firstNum,"sec",secondNum);
     })
@@ -123,7 +127,9 @@ makesButton.addEventListener('click', function(){
             default:
             result = operate(operator, parseFloat(firstNum),parseFloat(secondNum));
             firstNum = result;
+            operator = 0;
             updateDisplay(result);
+            console.log("res",result,"first",firstNum);
     }
 
 });
