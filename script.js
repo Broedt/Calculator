@@ -76,6 +76,15 @@ dotButton.addEventListener('click', function(){
     
     
 });
+percentButton.addEventListener('click',function(){
+    let perNumber = displayValue * 0.01;
+    displayValue = perNumber;
+    if (secondNum !== ""){
+        secondNum = displayValue
+    };
+    
+    updateDisplay(displayValue);
+});
 
 opButtons.forEach(button => {
     button.addEventListener('click',function(){
@@ -145,8 +154,4 @@ delButton.addEventListener('click', function(){
     updateDisplay(displayValue);
 });
 
-percentButton.addEventListener('click',function(){
-    let perNumber = displayValue * 0.01;
-    displayValue = perNumber;
-    updateDisplay(displayValue);
-})
+
