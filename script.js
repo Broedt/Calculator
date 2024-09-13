@@ -62,12 +62,14 @@ function add(a,b){
             secondNum = displayValue;
             updateDisplay(secondNum);
         }
-
+        
         else
         displayValue += pressedButton;
         updateDisplay(displayValue);
     })
+    console.log("sec",secondNum);
 });
+
 
 dotButton.addEventListener('click', function(){
     if(displayValue.includes('.')){
@@ -90,27 +92,33 @@ opButtons.forEach(button => {
     button.addEventListener('click',function(){
         let pressedButton = button.textContent;
         dotButton.textContent = ".";
-        if (operator == 0){
-            firstNum = displayValue;
-            displayValue = "";
-            secondNum = "";
-            operator = pressedButton;
-            updateDisplay(operator);
-            console.log("first",firstNum);
+        switch(true){
+            case result == firstNum && operator !== 0:
+                operator = 0;
+                displayValue += pressedButton;
+                secondNum = displayValue;
+                firstNum = operate(operator, parseFloat(firstNum),parseFloat(secondNum));
+                updateDisplay(firstNum);
+                displayValue = "";
+                secondNum = "";
+                break;
+            case result !== 0:
+                firstNum = result;
+                operator = pressedButton;
+                displayValue = "";
+                break;
+            case operator == 0:
+                firstNum = displayValue;
+                operator = pressedButton;
+                displayValue = "";
+                break;
+            case operator !== 0:
+                displayValue = operate(operator, parseFloat(firstNum),parseFloat(secondNum));
+                firstNum = displayValue;
+                displayValue = "";
+                break;
         }
-        else if( result !== 0){
-            displayValue = "";
-            secondNum = "";
-            firstNum = result;
-            result = 0;
-        }
-        
-        else 
-        
-        firstNum = operate(operator, parseFloat(firstNum),parseFloat(secondNum));
-        operator = pressedButton;
-        secondNum = "";
-        displayValue = "";
+    
         updateDisplay(firstNum+operator);
        
         console.log("op",operator,"first",firstNum,"sec",secondNum);
@@ -134,11 +142,13 @@ makesButton.addEventListener('click', function(){
             updateDisplay(message);
             break;
             default:
+        
             result = operate(operator, parseFloat(firstNum),parseFloat(secondNum));
             firstNum = result;
             operator = 0;
+            secondNum = "";
             updateDisplay(result);
-            console.log("res",result,"first",firstNum);
+            console.log("res",result,"first",firstNum,"sec",secondNum);
     }
 
 });
