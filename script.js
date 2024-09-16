@@ -55,19 +55,24 @@ function add(a,b){
         if (divNum > 10){
             displayValue = displayValue.slice(0,-1);
             updateDisplay(displayValue);
-        };
-        
-        if ( firstNum !== ""){
-            displayValue += pressedButton;
-            secondNum = displayValue;
-            updateDisplay(secondNum);
         }
-        
-        else
-        displayValue += pressedButton;
-        updateDisplay(displayValue);
-    })
-    console.log("sec",secondNum);
+        switch (true){
+            case firstNum == "":
+                displayValue += pressedButton;
+                updateDisplay(displayValue);
+                break;
+            case firstNum !== "":
+                secondNum += pressedButton;
+                displayValue = secondNum;
+                updateDisplay(displayValue);
+                break;
+                
+        }
+            
+
+        console.log("numButton","op",operator,"first",firstNum,"sec",secondNum,"res",result,"dis",displayValue);
+    });
+    
 });
 
 
@@ -92,65 +97,37 @@ opButtons.forEach(button => {
     button.addEventListener('click',function(){
         let pressedButton = button.textContent;
         dotButton.textContent = ".";
-        switch(true){
-            case result == firstNum && operator !== 0:
-                operator = 0;
-                displayValue += pressedButton;
-                secondNum = displayValue;
-                firstNum = operate(operator, parseFloat(firstNum),parseFloat(secondNum));
-                updateDisplay(firstNum);
-                displayValue = "";
-                secondNum = "";
+        switch (true){
+            case secondNum == "":
+                firstNum = displayValue;
+                operator = pressedButton
+                displayValue = firstNum+operator;
+                updateDisplay(displayValue);
                 break;
-            case result !== 0:
+            case secondNum !== "":
+                result = operate(operator,parseFloat(firstNum),parseFloat(secondNum));
                 firstNum = result;
                 operator = pressedButton;
-                displayValue = "";
+                secondNum = "";
+                displayValue = firstNum+operator;
+                updateDisplay(displayValue);
                 break;
-            case operator == 0:
-                firstNum = displayValue;
-                operator = pressedButton;
-                displayValue = "";
-                break;
-            case operator !== 0:
-                displayValue = operate(operator, parseFloat(firstNum),parseFloat(secondNum));
-                firstNum = displayValue;
-                displayValue = "";
-                break;
-        }
-    
-        updateDisplay(firstNum+operator);
+                
+         }
+        
        
-        console.log("op",operator,"first",firstNum,"sec",secondNum);
+        console.log("opButton","op",operator,"first",firstNum,"sec",secondNum,"res",result,"dis",displayValue);
     })
 });
 
 makesButton.addEventListener('click', function(){
-    let message = 0;
-    displayValue = "";
-    switch(true){
-        case (operator == "/" && firstNum == 0 && secondNum == 0):
-            message = "ask siri";
-            updateDisplay(message);
-            break;
-        case (operator == "/" && secondNum == 0):
-            message = "divide yourself by 0";
-            updateDisplay(message);
-            break;
-        case (operator == 0 || firstNum == "" || secondNum == ""):
-            message = "smth´s missing";
-            updateDisplay(message);
-            break;
-            default:
-        
-            result = operate(operator, parseFloat(firstNum),parseFloat(secondNum));
-            firstNum = result;
-            operator = 0;
-            secondNum = "";
-            updateDisplay(result);
-            console.log("res",result,"first",firstNum,"sec",secondNum);
-    }
-
+    result = operate(operator,parseFloat(firstNum),parseFloat(secondNum));
+    firstNum = result;
+    secondNum = "";
+    operator = 0;
+    displayValue = result;
+    updateDisplay(displayValue);
+    console.log("opButton","op",operator,"first",firstNum,"sec",secondNum,"res",result,"dis",displayValue);
 });
 
 clearButton.addEventListener('click', function(){
@@ -161,7 +138,9 @@ delButton.addEventListener('click', function(){
     
     let delNum = displayValue.slice(0,-1);
     displayValue = delNum;
+    if(secondNum !== ""){
+        secondNum = delNum;
+    }
     updateDisplay(displayValue);
+    console.log("numButton","op",operator,"first",firstNum,"sec",secondNum,"res",result,"dis",displayValue);
 });
-
-
