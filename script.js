@@ -121,6 +121,20 @@ opButtons.forEach(button => {
 });
 
 makesButton.addEventListener('click', function(){
+    switch(true){
+        case (operator == "/" && firstNum == 0 && secondNum == 0):
+            message = "ask siri";
+            updateDisplay(message);
+            break;
+        case (operator == "/" && secondNum == 0):
+            message = "divide yourself by 0";
+            updateDisplay(message);
+            break;
+        case (operator == 0 || firstNum == "" || secondNum == ""):
+            message = "smth´s missing";
+            updateDisplay(message);
+            break;
+            default:
     result = operate(operator,parseFloat(firstNum),parseFloat(secondNum));
     firstNum = result;
     secondNum = "";
@@ -128,6 +142,7 @@ makesButton.addEventListener('click', function(){
     displayValue = result;
     updateDisplay(displayValue);
     console.log("opButton","op",operator,"first",firstNum,"sec",secondNum,"res",result,"dis",displayValue);
+    }
 });
 
 clearButton.addEventListener('click', function(){
