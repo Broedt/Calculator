@@ -49,7 +49,7 @@ body{
     height: calc(450px/6 - 4px);
     margin: 2px;
     border-radius: 20px;
-    font-size: 40px;
+    font-size: 20px;
     cursor: pointer;
 }
 .grey{
