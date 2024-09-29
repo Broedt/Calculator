@@ -1,0 +1,68 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+.calculator{
+    width: 300px;
+    height: 450px;
+    border: 3px, solid black;
+    margin: 30px;
+    padding: 3px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.833);
+    
+}
+
+#display{
+    width: 100%;
+    height: calc((1/6)*100%);
+    margin: 2px;
+    border: 2px, solid red;
+    border-radius: 20px;
+    background-color: beige;
+    color: black;
+    font-size: 70px;
+    display: flex;
+    align-items: center;
+    justify-content:flex-end;
+    font-size: 4vw;
+    
+
+}
+.firstRow, .secondRow, .thirdRow, .fourthRow, .fifthRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%; 
+
+}
+
+.grey, .numbers, .operators, #makes{
+    width: calc(300px/4 - 4px);
+    height: calc(450px/6 - 4px);
+    margin: 2px;
+    border-radius: 20px;
+    font-size: 40px;
+    cursor: pointer;
+}
+.grey{
+    background-color: rgb(190, 190, 190);
+}
+.numbers{
+    background-color: rgb(90, 89, 89);
+    color: white;
+}
+.operators, #makes{
+    background-color: rgb(251, 175, 35);
+    color: white;
+}
+#zero{
+    width: calc(300px/4 *2);
+}
